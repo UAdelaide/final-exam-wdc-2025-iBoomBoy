@@ -59,7 +59,7 @@
 
         async function applyToWalk(requestId) {
           try {
-            
+            // Question 16: Added the function to fetch the logged-in user
             const user = await getCurrentUser();
             if (!user) return;
 
