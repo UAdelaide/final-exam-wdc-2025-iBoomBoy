@@ -31,6 +31,8 @@ let db;
       database: 'DogWalkService'
     });
 
+    console.log('✅ Connected to DogWalkService DB');
+
     const [userCheck] = await db.execute('SELECT COUNT(*) AS count FROM Users');
     if (userCheck[0].count === 0) {
       await db.execute(`
