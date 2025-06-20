@@ -34,9 +34,8 @@ let db;
       database: 'DogWalkService'
     });
 
-    console.log('✅ Connected to DogWalkService DB');
+    console.log('Connected to DogWalkService DB');
 
-    // Check and seed Users table
     const [userCheck] = await db.execute('SELECT COUNT(*) AS count FROM Users');
     if (userCheck[0].count === 0) {
       await db.execute(`
@@ -49,7 +48,6 @@ let db;
       `);
     }
 
-    // Check and seed Dogs table
     const [dogCheck] = await db.execute('SELECT COUNT(*) AS count FROM Dogs');
     if (dogCheck[0].count === 0) {
       await db.execute(`
@@ -62,7 +60,6 @@ let db;
       `);
     }
 
-    // Check and seed WalkRequests table
     const [walkCheck] = await db.execute('SELECT COUNT(*) AS count FROM WalkRequests');
     if (walkCheck[0].count === 0) {
       await db.execute(`
@@ -80,7 +77,6 @@ let db;
   }
 })();
 
-// Endpoint: /api/dogs
 app.get('/api/dogs', async (req, res) => {
   try {
     const [dogs] = await db.execute(`
