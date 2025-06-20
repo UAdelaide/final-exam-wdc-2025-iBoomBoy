@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
 
-//
+// Question 13: Enabled session tracking
 app.use(session({
   secret: 'dogwalk_secret', // use env var in real apps
   resave: false,
