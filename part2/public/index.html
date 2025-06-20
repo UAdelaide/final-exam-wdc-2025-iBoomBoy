@@ -77,6 +77,57 @@
         loginMsg.textContent = 'Error logging in';
       }
     });
+
+    async function fetchDogsWithImages() {
+      const container = document.getElementById('dogTable');
+      container.innerHTML = '<p>Loading dogs...</p>';
+
+      try {
+        const res = await fetch('/api/walks/dogs');
+        const dogs = await res.json();
+
+        const dogsWithImages = await Promise.all(dogs.map(async (dog) => {
+          const imgRes = await fetch('https://dog.ceo/api/breeds/image/random');
+          const imgData = await imgRes.json();
+          return { ...dog, img: imgData.message };
+        }));
+
+        let html = `
+          <table class="table table-bordered table-hover mt-3">
+            <thead class="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Owner ID</th>
+                <th>Photo</th>
+              </tr>
+            </thead>
+            <tbody>
+        `;
+
+        for (const dog of dogsWithImages) {
+          html += `
+            <tr>
+              <td>${dog.dog_id}</td>
+              <td>${dog.name}</td>
+              <td>${dog.size}</td>
+              <td>${dog.owner_id}</td>
+              <td><img src="${dog.img}" alt="dog image" width="100"></td>
+            </tr>
+          `;
+        }
+
+        html += `</tbody></table>`;
+        container.innerHTML = html;
+
+      } catch (err) {
+        console.error(err);
+        container.innerHTML = '<p class="text-danger">Failed to load dogs.</p>';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', fetchDogsWithImages);
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
