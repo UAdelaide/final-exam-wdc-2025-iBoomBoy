@@ -79,7 +79,7 @@ router.post('/:id/apply', async (req, res) => {
   }
 });
 
-// Question 17: 
+// Question 17: Added a new route to display all dogs with pics
 // GET all dogs in the system (for homepage display)
 router.get('/dogs', async (req, res) => {
   try {
