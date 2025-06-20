@@ -1,8 +1,8 @@
-const express = require('express');
-const mysql = require('mysql2/promise');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+var express = require('express');
+var mysql = require('mysql2/promise');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
 const app = express();
 
