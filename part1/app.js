@@ -15,18 +15,15 @@ let db;
 
 (async () => {
   try {
-    // Connect to MySQL without selecting a database first
     const connection = await mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '' // Update if needed
+      password: ''
     });
 
-    // Ensure database exists
     await connection.query('CREATE DATABASE IF NOT EXISTS DogWalkService');
     await connection.end();
 
-    // Connect to DogWalkService database
     db = await mysql.createConnection({
       host: 'localhost',
       user: 'root',
@@ -34,7 +31,7 @@ let db;
       database: 'DogWalkService'
     });
 
-    console.log('Connected to DogWalkService DB');
+    console.log('Connected to DB');
 
     const [userCheck] = await db.execute('SELECT COUNT(*) AS count FROM Users');
     if (userCheck[0].count === 0) {
