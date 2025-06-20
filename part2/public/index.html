@@ -28,6 +28,8 @@
       <div id="loginMsg" class="mt-2 text-danger"></div>
     </form>
 
+
+
     <h2 class="mt-5">All Registered Dogs 🐾</h2>
     <div id="dogTable" class="table-responsive"></div>
   </div>
@@ -78,7 +80,7 @@
       }
     });
 
-    // Question 17: Added 
+    // Question 17: Added fetchDogsWithImages function
     async function fetchDogsWithImages() {
       const container = document.getElementById('dogTable');
       container.innerHTML = '<p>Loading dogs...</p>';
