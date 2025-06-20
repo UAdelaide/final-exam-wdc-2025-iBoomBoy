@@ -68,7 +68,7 @@ let db;
     }
 
   } catch (err) {
-    console.error('❌ DB Initialization Failed:', err.message);
+    console.error('Error setting up database. Ensure Mysql is running: service mysql start', err);
   }
 })();
 
