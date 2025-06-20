@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/db');
 
-// Question 15: Addeda 
+// Question 15: Added a new route for dogs owned
 // GET dogs owned by the currently logged-in user
 router.get('/my-dogs', async (req, res) => {
   if (!req.session.user) {
