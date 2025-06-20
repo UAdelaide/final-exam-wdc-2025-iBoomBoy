@@ -89,6 +89,7 @@
         const error = ref('');
         const myDogs = ref([]); //Question 15: Added myDogs and a loader
 
+        //Added a loader for myDogs
         async function loadMyDogs() {
           try {
             const res = await fetch('/api/walks/my-dogs');
