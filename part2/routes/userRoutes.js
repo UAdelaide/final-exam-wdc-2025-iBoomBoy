@@ -59,7 +59,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Question 2: Added a logout Route in userRoutes
+// Question 14: Added a logout Route in userRoutes
 // POST logout: destroy session
 router.post('/logout', (req, res) => {
   req.session.destroy(err => {
