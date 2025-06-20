@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOG OF THE DAY 🐶🐶🐶</title>
+  <script src="https://unpkg.com/vue@3"></script>
+  <style>
+    body {
+      background: #ff00ff;
+      color: lime;
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 22px;
+      margin: 100px;
+      overflow-x: scroll;
+    }
+    button {
+      background: yellow;
+      font-size: 30px;
+      padding: 30px;
+      border: 5px dashed red;
+    }
+    .dog-container {
+      transform: rotate(7deg);
+      border: 10px dotted orange;
+      margin-top: 100px;
+      width: 800px;
+    }
+    img {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>WELCOME TO THE ULTRA DOG PAGE!!!</h1>
+    <button @click="fetchDog">GET ANOTHER DOG</button>
+    <div class="dog-container">
+      <h2>DOG OF THE DAY: {{ dogName }}</h2>
+      <img :src="dogImage" alt="">
+      <p>This amazing dog is totally awesome and 5 years old and is the best dog everrrrrrrrrrrrrr.</p>
+    </div>
+    <p>Keep clicking the yellow thing to see more dogs!</p>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          dogImage: '',
+          dogName: 'Fluffy McFlufferson'
+        }
+      },
+      mounted() {
+        this.fetchDog();
+      },
+      methods: {
+        async fetchDog() {
+          const res = await fetch('https://dog.ceo/api/breeds/image/random');
+          const data = await res.json();
+          this.dogImage = data.message;
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
