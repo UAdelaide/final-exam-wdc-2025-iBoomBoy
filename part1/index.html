@@ -2,52 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dog Page</title>
+  <title>DOG OF THE DAY 🐶🐶🐶</title>
   <script src="https://unpkg.com/vue@3"></script>
   <style>
     body {
-      background-color: hotpink;
-      color: yellow;
-      font-family: cursive;
-      text-align: center;
-      font-size: 24px;
-    }
-    img {
-      width: 300px;
-      height: auto;
-      margin: 20px;
-      border: 5px solid cyan;
+      background: #ff00ff;
+      color: lime;
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 22px;
+      margin: 100px;
+      overflow-x: scroll;
     }
     button {
-      font-size: 20px;
-      padding: 20px;
-      background-color: lime;
-      border: none;
+      background: yellow;
+      font-size: 30px;
+      padding: 30px;
+      border: 5px dashed red;
     }
-    .content {
-      width: 2000px;
+    .dog-container {
+      transform: rotate(7deg);
+      border: 10px dotted orange;
+      margin-top: 100px;
+      width: 800px;
+    }
+    img {
+      width: 100%;
     }
   </style>
 </head>
 <body>
   <div id="app">
-    <h1>Click for Dog!!</h1>
-    <button @click="fetchDog">CLICK ME!</button>
-    <div class="content">
-      <h2>Dog of the Day: {{ dogName }}</h2>
-      <img :src="dogImage">
-      <p>This dog is cool and likes stuff.</p>
+    <h1>WELCOME TO THE ULTRA DOG PAGE!!!</h1>
+    <button @click="fetchDog">GET ANOTHER DOG</button>
+    <div class="dog-container">
+      <h2>DOG OF THE DAY: {{ dogName }}</h2>
+      <img :src="dogImage" alt="">
+      <p>This amazing dog is totally awesome and 5 years old and is the best dog everrrrrrrrrrrrrr.</p>
     </div>
+    <p>Keep clicking the yellow thing to see more dogs!</p>
   </div>
 
   <script>
     const { createApp } = Vue;
+
     createApp({
       data() {
         return {
           dogImage: '',
-          dogName: 'Sparky'
-        };
+          dogName: 'Fluffy McFlufferson'
+        }
       },
       mounted() {
         this.fetchDog();
