@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models/db');
 
+// Question 14: Added a login Route
 // GET dogs owned by the currently logged-in user
 router.get('/my-dogs', async (req, res) => {
   if (!req.session.user) {
