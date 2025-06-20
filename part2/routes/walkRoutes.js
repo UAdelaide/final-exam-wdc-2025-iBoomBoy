@@ -79,4 +79,17 @@ router.post('/:id/apply', async (req, res) => {
   }
 });
 
+// Question 17: 
+// GET all dogs in the system (for homepage display)
+router.get('/dogs', async (req, res) => {
+  try {
+    const [rows] = await db.query('SELECT * FROM Dogs');
+    res.json(rows);
+  } catch (err) {
+    console.error('Error fetching dogs:', err);
+    res.status(500).json({ error: 'Failed to fetch dogs' });
+  }
+});
+
+
 module.exports = router;
