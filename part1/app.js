@@ -128,4 +128,9 @@ app.get('/api/walkers/summary', async (req, res) => {
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+const PORT = 8080;
+app.listen(PORT, () => {
+  console.log(`🚀 Server listening on http://localhost:${PORT}`);
+});
+
 module.exports = app;
